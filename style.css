@@ -295,6 +295,7 @@ h3 {
     right: 20px;
     width: 350px; /* ou 90% no mobile */
     max-height: 86vh; /* Limita a altura a 85% da tela */
+    z-index: 9999;
     background-image: url('https://i.pinimg.com/1200x/3a/4e/c5/3a4ec5aa390da3911e1eea9ee1bd9273.jpg');
     background-size: cover;
     background-position: center;
