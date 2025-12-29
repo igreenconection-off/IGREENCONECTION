@@ -262,6 +262,11 @@ function toggleChat() {
 function restartChat() {
     startChat();
 }
+function closeChat(event) {
+    if (event) event.stopPropagation(); // Impede conflitos de clique
+    const container = document.getElementById('chatbot-container');
+    container.classList.add('chatbot-closed');
+}
 
 function addBotMessage(text, delay = 0) {
     return new Promise(resolve => {
@@ -652,6 +657,6 @@ function handleTrabalheConosco() {
 
 // --- INICIALIZAÇÃO DO SITE ---
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     renderHome();
 });
