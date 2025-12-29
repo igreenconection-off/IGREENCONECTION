@@ -1,6 +1,5 @@
-// --- DADOS DO SITE ---
+// --- DADOS DO CONTEÚDO (HTML STRINGS) ---
 
-// Conteúdo da HOME
 const homeContent = `
     <section class="hero-section">
         <img src="https://descarbonizesolucoes.com.br/blog/wp-content/uploads/2024/12/engenharia-instalacao-paineis-solares-campo-aberto.webp" alt="Energia Solar" class="hero-img">
@@ -26,7 +25,7 @@ const homeContent = `
         <h2>Produtos Oferecidos</h2>
         <p>A iGreen diversificou seu portfólio para além da energia solar, criando um ecossistema de serviços:</p>
         <ul>
-            <li><strong>Conexão Green (Energia por Assinatura):</strong> O produto principal. Desconto direto na conta de luz para residências e empresas.</li>
+            <li><strong>Conexão Green (Energia por Assinatura):</strong> O produto principal. Desconto direto na conta de luz.</li>
             <li><strong>Conexão Livre:</strong> Solução voltada para grandes empresas e indústrias (alta tensão).</li>
             <li><strong>Conexão Placas:</strong> Venda e instalação física de painéis solares.</li>
             <li><strong>iGreen Telecom:</strong> Uma operadora de telefonia móvel digital.</li>
@@ -50,34 +49,32 @@ const homeContent = `
     </div>
 `;
 
-// Conteúdo SOBRE
 const aboutContent = `
     <div class="content-wrapper">
         <h2>Quem somos?</h2>
         
         <h3>1. Missão, Visão e Valores</h3>
-        <p><strong>Missão:</strong> Enriquecer vidas e impactar o mundo com sustentabilidade, transformando a vida das pessoas através de uma energia limpa, barata e prática.</p>
-        <p><strong>Visão:</strong> Ser uma referência global em sustentabilidade, com a meta ousada de alcançar 1 milhão de clientes satisfeitos até 2025.</p>
+        <p><strong>Missão:</strong> Enriquecer vidas e impactar o mundo com sustentabilidade.</p>
+        <p><strong>Visão:</strong> Ser uma referência global em sustentabilidade, meta de 1 milhão de clientes até 2025.</p>
         <p><strong>Valores:</strong> Fé, Prosperidade e Sustentabilidade.</p>
 
         <h3>2. Como Funciona (O Produto Principal)</h3>
-        <p>O carro-chefe da empresa é a Energia Solar por Assinatura (Energia Compartilhada).</p>
+        <p>O carro-chefe da empresa é a Energia Solar por Assinatura.</p>
         <ul>
-            <li><strong>Geração:</strong> A iGreen possui ou faz parcerias com grandes "fazendas solares".</li>
-            <li><strong>Injeção:</strong> Essa energia é injetada na rede da concessionária local.</li>
-            <li><strong>Crédito:</strong> A energia gerada vira créditos que são abatidos na sua conta.</li>
-            <li><strong>Benefício:</strong> O cliente recebe um desconto (10% a 15%) sem obras.</li>
+            <li><strong>Geração:</strong> Parcerias com grandes "fazendas solares".</li>
+            <li><strong>Injeção:</strong> Energia injetada na rede da concessionária local.</li>
+            <li><strong>Crédito:</strong> Energia vira créditos abatidos na sua conta.</li>
         </ul>
 
         <h3>3. Principais Ações e Diferenciais</h3>
-        <p>A iGreen opera em um modelo de Gestão Compartilhada 100% digital, com Clube de Benefícios e Cashback Sustentável.</p>
+        <p>Gestão Compartilhada 100% digital, Clube de Benefícios e Cashback Sustentável.</p>
 
         <h3>4. Modelo de Negócio (Licenciados)</h3>
-        <p>O licenciado ganha comissões recorrentes sobre o consumo de energia dos clientes que ele conecta à rede.</p>
+        <p>O licenciado ganha comissões recorrentes sobre o consumo de energia dos clientes.</p>
 
         <h3>5. Parcerias Estratégicas</h3>
         <p>Alianças com gigantes como Comerc Energia e Vibra Energia.</p>
-        
+
         <div class="ai-links">
             <p>Ainda tem dúvidas? Pergunte a qualquer IA da sua confiança!</p>
             <br>
@@ -88,41 +85,39 @@ const aboutContent = `
     </div>
 `;
 
-// Dados dos Produtos
 const productsData = [
     {
         title: "CONEXÃO PLACAS",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjVz9ROZvxxP7SW82EPzwoP2V3OP5AQgmpDA&s",
-        desc: "A conexão placas é o meio pelo qual você pode comprar o seu kit completo de sistema solar fotovoltaico para sua casa e gerar sua própria energia! Deseja realizar uma simulação agora? <a href='#' onclick='openChatWithOption(\"Placas\"); return false;'>Fale conosco!</a>"
+        desc: "Compre seu kit completo de sistema solar fotovoltaico para sua casa! <a href='#' onclick='openChatWithOption(\"Placas\"); return false;'>Fale conosco!</a>"
     },
     {
         title: "CONEXÃO SOLAR",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4lJe8N58Lf37wVVf0YmNfcD1c4WN-7HDbig&s",
-        desc: "A conexão solar é o meio pelo qual você pode adquirir seu próprio sistema solar fotovoltaico e gerar sua própria energia sem investimentos! Nós faremos a vistoria, instalação e alugaremos o seu telhado. Ao fim do período, a usina será 100% sua! Gostou da ideia? <a href='#' onclick='openChatWithOption(\"Solar\"); return false;'>Fale conosco!</a>"
+        desc: "Gere energia sem investimentos! Alugamos seu telhado e a usina será sua no fim do contrato. <a href='#' onclick='openChatWithOption(\"Solar\"); return false;'>Fale conosco!</a>"
     },
     {
         title: "CONEXÃO LIVRE",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8boxAOqBvav8PMtGG0hUtKgS_stsm3oYlYA&s",
-        desc: "Solução voltada para grandes empresas e indústrias (alta tensão) que desejam migrar para o Mercado Livre de Energia. <a href='https://wa.me/5584920039738' target='_blank'>Fale conosco!</a>"
+        desc: "Solução para grandes empresas (alta tensão) migrarem para o Mercado Livre. <a href='https://wa.me/5584920039738' target='_blank'>Fale conosco!</a>"
     },
     {
         title: "CONEXÃO GREEN",
         img: "https://blog.corsolar.com.br/wp-content/uploads/2022/06/o-que-e-energia-solar.jpg",
-        desc: "Economize na sua fatura sem investir nada! Energia solar por assinatura com desconto de até 15%. Ficou interessado? <a href='#' onclick='openChatWithOption(\"Green\"); return false;'>Fale conosco!</a>"
+        desc: "Energia por assinatura com desconto de até 15% sem obras. <a href='#' onclick='openChatWithOption(\"Green\"); return false;'>Fale conosco!</a>"
     },
     {
         title: "CONEXÃO TELECOM",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbFNAlVKJWDNtfErOMrSpZKu8nEYoPUYKKOw&s",
-        desc: "Uma operadora de telefonia móvel digital que oferece planos de celular com benefícios como internet que acumula e WhatsApp ilimitado. <a href='#' onclick='openChatWithOption(\"Telecom\"); return false;'>Fale conosco!</a>"
+        desc: "Operadora digital com internet que acumula e WhatsApp ilimitado. <a href='#' onclick='openChatWithOption(\"Telecom\"); return false;'>Fale conosco!</a>"
     },
     {
         title: "TRABALHE CONOSCO",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdVchOpxDF6JYLgLdMByr1tBnqN4dDeqZN5Q&s",
-        desc: "Torne-se um licenciado iGreen e gere renda passiva comercializando soluções de energia. Ficou interessado? <a href='#' onclick='openChatWithOption(\"Trabalhe\"); return false;'>Fale conosco!</a>"
+        desc: "Seja um licenciado iGreen e gere renda passiva. <a href='#' onclick='openChatWithOption(\"Trabalhe\"); return false;'>Fale conosco!</a>"
     }
 ];
 
-// Dados de Contato
 const contactData = [
     { name: "Instagram", img: "https://p2.trrsf.com/image/fget/cf/500/0/images.terra.com/2025/06/20/1675662044-logomarca-do-instagram.png", link: "https://instagram.com/igreenconection" },
     { name: "Tiktok", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1KGWusbkg_VTakXR1MIIJlHzj3lwC4avJDg&s", link: "https://tiktok.com/@igreen.conection?_r=1&_t=ZS-92dQ9cUoxHd" },
@@ -133,19 +128,22 @@ const contactData = [
 
 // --- FUNÇÕES DE NAVEGAÇÃO ---
 
-const appContent = document.getElementById('app-content');
-
 function renderHome() {
-    appContent.innerHTML = homeContent;
-    closeMobileMenu();
+    const appContent = document.getElementById('app-content');
+    if (appContent) {
+        appContent.innerHTML = homeContent;
+        closeMobileMenu();
+    }
 }
 
 function renderAbout() {
+    const appContent = document.getElementById('app-content');
     appContent.innerHTML = aboutContent;
     closeMobileMenu();
 }
 
 function renderProducts() {
+    const appContent = document.getElementById('app-content');
     let html = '<h2>Nossos Produtos</h2><div class="products-grid">';
     productsData.forEach((prod, index) => {
         html += `
@@ -161,6 +159,7 @@ function renderProducts() {
 }
 
 function renderContact() {
+    const appContent = document.getElementById('app-content');
     let html = '<h2>Contate-nos</h2><div class="contact-list">';
     contactData.forEach(contact => {
         html += `
@@ -175,19 +174,20 @@ function renderContact() {
 }
 
 function openBlog() {
-    // Redireciona para blog externo (placeholder no momento)
     window.location.href = "https://igreenenergy.com.br/blog"; 
 }
 
 function toggleMobileMenu() {
-    document.querySelector('.menu').classList.toggle('active');
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('active');
 }
 
 function closeMobileMenu() {
-    document.querySelector('.menu').classList.remove('active');
+    const menu = document.querySelector('.menu');
+    if (menu) menu.classList.remove('active');
 }
 
-// --- MODAL DE PRODUTOS ---
+// --- MODAIS ---
 
 function openProductModal(index) {
     const prod = productsData[index];
@@ -202,25 +202,28 @@ function closeModal() {
     document.getElementById('product-modal').style.display = 'none';
 }
 
-// Abre o chat em uma opção específica vindo do card
 function openChatWithOption(type) {
     closeModal();
     const chatContainer = document.getElementById('chatbot-container');
+    
+    // Se estiver fechado, abre
     if (chatContainer.classList.contains('chatbot-closed')) {
         toggleChat();
     }
-    // Pequeno delay para garantir carregamento
+
+    // Delay para garantir que o chat abriu e carregou
     setTimeout(() => {
         if(type === 'Placas') handlePlacasSolares();
         if(type === 'Solar') handleAluguelTelhado();
         if(type === 'Green') handleDescontoFatura();
         if(type === 'Telecom') handleTelecom();
         if(type === 'Trabalhe') handleTrabalheConosco();
-    }, 500);
+    }, 600);
 }
 
-// --- LOGICA DO CHATBOT ---
+// --- CHATBOT ---
 
+// URLs
 const WA_BASE = "https://wa.me/5584920039738";
 const LINK_CADASTRO_DESCONTO = 'https://igreenconection-off.github.io/IGREENCONECTION/';
 const WA_DUVIDAS_CADASTRO = `${WA_BASE}?text=Ol%C3%A1!%20J%C3%A1%20fiz%20o%20cadastro%20do%20desconto%20na%20fatura%20e%20desejo%20tirar%20d%C3%BAvidas.`;
@@ -230,19 +233,21 @@ const WA_PORTABILIDADE = `${WA_BASE}?text=Ol%C3%A1!%20Desejo%20solicitar%20a%20p
 const WA_SUPORTE_TELECOM = `https://wa.me/558001830080?text=Ol%C3%A1!%20J%C3%A1%20sou%20cliente%20iGreen%20Telecom%20e%20desejo%20suporte.`;
 const LINK_BOT_PLACAS_SOLARES = 'https://igreenconection-off.github.io/conex-oplacasesolar/';
 const WA_TRABALHE_CONOSCO = `${WA_BASE}?text=Ol%C3%A1!%20Desejo%20me%20tornar%20um%20franquiado%20e%20trabalhar%20com%20a%20iGreen%20Energy.`;
-const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScRb0k71iMQxP56I54euwRW8tnxcJVqBujT0du4wtFgCHUC4g/viewform?embedded=true'; // Usando form de divulgador como placeholder funcional
+const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScRb0k71iMQxP56I54euwRW8tnxcJVqBujT0du4wtFgCHUC4g/viewform?embedded=true';
 
 const MENU_PRINCIPAL_BTN = { text: 'Voltar ao Início', action: startChat };
 
-const chatMessages = document.getElementById('chat-messages');
-const optionsContainer = document.getElementById('options-container');
-const inputPlaceholder = document.getElementById('input-placeholder');
-
 function toggleChat() {
     const container = document.getElementById('chatbot-container');
+    const messagesDiv = document.getElementById('chat-messages');
+    
     container.classList.toggle('chatbot-closed');
-    if (!container.classList.contains('chatbot-closed') && chatMessages.innerHTML === '') {
-        startChat();
+    
+    // Verificação mais robusta: se não tem filhos (mensagens), inicia o chat
+    if (!container.classList.contains('chatbot-closed')) {
+        if (messagesDiv.children.length === 0) {
+            startChat();
+        }
     }
 }
 
@@ -250,21 +255,24 @@ function restartChat() {
     startChat();
 }
 
+// Adicionar mensagem do BOT
 function addBotMessage(text, delay = 0) {
     return new Promise(resolve => {
         setTimeout(() => {
+            const chatMessages = document.getElementById('chat-messages');
             const div = document.createElement('div');
             div.className = 'message bot-message';
             div.innerHTML = `<img src="https://c.topshort.org/aifacefy/ai_face_generator/template/1.webp" class="bot-avatar-small"> ${text}`;
             chatMessages.appendChild(div);
-            // NÃO rolar para o final automaticamente conforme pedido
-            // chatMessages.scrollTop = chatMessages.scrollHeight; 
+            // Scroll removed as requested
             resolve();
         }, delay);
     });
 }
 
+// Adicionar mensagem do USUÁRIO
 function addUserMessage(text) {
+    const chatMessages = document.getElementById('chat-messages');
     const div = document.createElement('div');
     div.className = 'message user-message';
     div.innerText = text;
@@ -272,19 +280,24 @@ function addUserMessage(text) {
 }
 
 function clearOptions() {
+    const optionsContainer = document.getElementById('options-container');
+    const inputPlaceholder = document.getElementById('input-placeholder');
+    
     optionsContainer.innerHTML = '';
     optionsContainer.style.display = 'none';
-    inputPlaceholder.innerText = "Escolha uma opção...";
+    if(inputPlaceholder) inputPlaceholder.innerText = "Escolha uma opção...";
 }
 
 function addOptions(options) {
+    const optionsContainer = document.getElementById('options-container');
     clearOptions();
+    
     options.forEach(opt => {
         const div = document.createElement('div');
         div.className = 'option-item';
         div.innerText = opt.text;
         div.onclick = () => {
-            toggleOptions(); // fecha menu
+            toggleOptions(); 
             opt.action();
         };
         optionsContainer.appendChild(div);
@@ -292,7 +305,9 @@ function addOptions(options) {
 }
 
 function toggleOptions() {
+    const optionsContainer = document.getElementById('options-container');
     if (optionsContainer.innerHTML === '') return;
+    
     const isVisible = optionsContainer.style.display === 'block';
     optionsContainer.style.display = isVisible ? 'none' : 'block';
 }
@@ -300,9 +315,12 @@ function toggleOptions() {
 // --- FLUXOS DO CHAT ---
 
 function startChat() {
+    const chatMessages = document.getElementById('chat-messages');
     chatMessages.innerHTML = '';
     clearOptions();
-    addBotMessage("Olá, seja bem-vindo(a) à iGreen Energy. Sobre o que vamos conversar hoje?", 200).then(() => {
+    
+    // Delay curto para garantir renderização
+    addBotMessage("Olá, seja bem-vindo(a) à iGreen Energy. Sobre o que vamos conversar hoje?", 300).then(() => {
         addOptions([
             { text: 'Conexão placas (Compra)', action: handlePlacasSolares },
             { text: 'Conexão Solar (Aluguel)', action: handleAluguelTelhado },
@@ -313,21 +331,19 @@ function startChat() {
     });
 }
 
-// 1. Desconto na Fatura (Com Quiz da Lei 14300)
+// Fluxo Desconto / Quiz
 function handleDescontoFatura() {
     addUserMessage('Conexão Green (Desconto)');
     clearOptions();
-    addBotMessage("Antes de liberar seu desconto exclusivo na fatura de energia, preciso confirmar alguns requisitos da lei 14300. Pode ser?").then(() => {
-        addOptions([
-            { text: 'Pode ser', action: handleQ1_Titular }
-        ]);
+    addBotMessage("Antes de liberar seu desconto exclusivo na fatura de energia, preciso confirmar alguns requisitos da lei 14300. Pode ser?", 500).then(() => {
+        addOptions([{ text: 'Pode ser', action: handleQ1_Titular }]);
     });
 }
 
 function handleQ1_Titular() {
     addUserMessage('Pode ser');
     clearOptions();
-    addBotMessage("Para prosseguir, você precisa ser o titular da conta de energia. Você é o titular?").then(() => {
+    addBotMessage("Para prosseguir, você precisa ser o titular da conta de energia. Você é o titular?", 500).then(() => {
         addOptions([
             { text: 'Sim', action: handleQ2_Valor },
             { text: 'Não', action: handleEnd_NaoTitular }
@@ -338,7 +354,7 @@ function handleQ1_Titular() {
 function handleQ2_Valor() {
     addUserMessage('Sim');
     clearOptions();
-    addBotMessage("Ótimo! Agora me diga: O valor da sua conta de energia é acima de R$150 por mês?").then(() => {
+    addBotMessage("Ótimo! Agora me diga: O valor da sua conta de energia é acima de R$150 por mês?", 500).then(() => {
         addOptions([
             { text: 'Sim', action: handleQ3_BaixaRenda },
             { text: 'Não', action: handleEnd_ValorBaixo }
@@ -349,7 +365,7 @@ function handleQ2_Valor() {
 function handleQ3_BaixaRenda() {
     addUserMessage('Sim');
     clearOptions();
-    addBotMessage("Só mais uma pergunta: O seu CPF está cadastrado no programa Baixa Renda/NIS junto à concessionária de energia?").then(() => {
+    addBotMessage("Só mais uma pergunta: O seu CPF está cadastrado no programa Baixa Renda/NIS junto à concessionária de energia?", 500).then(() => {
         addOptions([
             { text: 'Sim', action: handleEnd_BaixaRenda },
             { text: 'Não', action: handleFinal_Formulario }
@@ -357,7 +373,6 @@ function handleQ3_BaixaRenda() {
     });
 }
 
-// Finais Reprovados
 function handleEnd_NaoTitular() {
     addUserMessage('Não');
     clearOptions();
@@ -374,17 +389,17 @@ function handleEnd_BaixaRenda() {
     addBotMessage("Neste momento, nosso benefício é exclusivo para quem não está inscrito no programa Baixa Renda (NIS).", 0).then(() => addOptions([MENU_PRINCIPAL_BTN]));
 }
 
-// Final Aprovado (Formulário)
 function handleFinal_Formulario() {
     addUserMessage('Não');
     clearOptions();
     addBotMessage("Perfeito! Você atende a todos os requisitos. Preencha os campos abaixo e clique em prosseguir.").then(() => {
+        const chatMessages = document.getElementById('chat-messages');
         const div = document.createElement('div');
         div.className = 'form-container';
         div.innerHTML = `<iframe src="${FORM_URL}">Carregando...</iframe>`;
         chatMessages.appendChild(div);
 
-        addBotMessage("Já enviou os dados? Se sim, clique em prosseguir.", 300).then(() => {
+        addBotMessage("Já enviou os dados? Se sim, clique em prosseguir.", 1000).then(() => {
             addOptions([{ text: 'PROSSEGUIR', action: handleProceedToLink }]);
         });
     });
@@ -394,11 +409,10 @@ function handleProceedToLink() {
     addUserMessage('PROSSEGUIR');
     clearOptions();
     addBotMessage("Obrigado! Redirecionando para o cadastro final...").then(() => {
-        setTimeout(() => window.location.href = LINK_CADASTRO_DESCONTO, 1500);
+        setTimeout(() => window.location.href = LINK_CADASTRO_DESCONTO, 2000);
     });
 }
 
-// 2. Telecom
 function handleTelecom() {
     addUserMessage('Conexão Telecom');
     clearOptions();
@@ -412,7 +426,6 @@ function handleTelecom() {
     });
 }
 
-// 3. Placas (Redirecionamento)
 function handlePlacasSolares() {
     addUserMessage('Conexão Placas');
     clearOptions();
@@ -424,7 +437,6 @@ function handlePlacasSolares() {
     });
 }
 
-// 4. Aluguel/Solar (Redirecionamento)
 function handleAluguelTelhado() {
     addUserMessage('Conexão Solar');
     clearOptions();
@@ -444,7 +456,6 @@ function handleSolarRedirect() {
     });
 }
 
-// 5. Trabalhe Conosco
 function handleTrabalheConosco() {
     addUserMessage('Trabalhe Conosco');
     clearOptions();
@@ -456,7 +467,9 @@ function handleTrabalheConosco() {
     });
 }
 
-// Inicializar Home
-window.onload = function() {
+// --- INICIALIZAÇÃO DO SITE ---
+
+// Isso garante que o site carregue apenas quando o HTML estiver pronto
+document.addEventListener('DOMContentLoaded', function() {
     renderHome();
-};
+});
