@@ -213,29 +213,38 @@ function openChatWithOption(type) {
 
     // Delay para garantir que o chat abriu e carregou
     setTimeout(() => {
-        if(type === 'Placas') handlePlacasSolares();
-        if(type === 'Solar') handleAluguelTelhado();
+        if(type === 'Placas') handleSetorSolar();
+        if(type === 'Solar') handleSetorSolar();
         if(type === 'Green') handleDescontoFatura();
         if(type === 'Telecom') handleTelecom();
         if(type === 'Trabalhe') handleTrabalheConosco();
     }, 600);
 }
 
-// --- CHATBOT ---
+// --- CHATBOT CONSTANTES ---
 
-// URLs
 const WA_BASE = "https://wa.me/5584920039738";
-const LINK_CADASTRO_DESCONTO = 'https://igreenconection-off.github.io/IGREENCONECTION/';
-const WA_DUVIDAS_CADASTRO = `${WA_BASE}?text=Ol%C3%A1!%20J%C3%A1%20fiz%20o%20cadastro%20do%20desconto%20na%20fatura%20e%20desejo%20tirar%20d%C3%BAvidas.`;
-const WA_AJUDA_CADASTRO = `${WA_BASE}?text=Ol%C3%A1!%20Desejo%20me%20cadastrar%20para%20obter%20o%20desconto%20na%20fatura%20de%20energia.%20Tentei%20s%C3%B3%20e%20n%C3%A3o%20consegui.`;
+
+// Links de Redirecionamento e Suporte
+const LINK_CADASTRO_DESCONTO = 'https://digital.igreenenergy.com.br/?id=91507&sendcontract=true';
 const WA_NOVO_CHIP = `${WA_BASE}?text=Ol%C3%A1!%20Desejo%20contratar%20um%20novo%20chip%20iGreen%20Telecom,%20pode%20me%20ajudar?`;
 const WA_PORTABILIDADE = `${WA_BASE}?text=Ol%C3%A1!%20Desejo%20solicitar%20a%20portabilidade%20do%20meu%20n%C3%BAmero%20para%20a%20iGreen%20Telecom.%20Pode%20me%20ajudar?`;
 const WA_SUPORTE_TELECOM = `https://wa.me/558001830080?text=Ol%C3%A1!%20J%C3%A1%20sou%20cliente%20iGreen%20Telecom%20e%20desejo%20suporte.`;
-const LINK_BOT_PLACAS_SOLARES = 'https://igreenconection-off.github.io/conex-oplacasesolar/';
 const WA_TRABALHE_CONOSCO = `${WA_BASE}?text=Ol%C3%A1!%20Desejo%20me%20tornar%20um%20franquiado%20e%20trabalhar%20com%20a%20iGreen%20Energy.`;
-const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScr9672uki_uqqJlm5DefPYFzpxGV-JVxqLmh4S_S6IP2N6Bg/viewform?usp=dialog';
+
+// Novos Links Suporte Solar/Placas
+const WA_SUPORTE_PLACAS = `${WA_BASE}?text=Ol%C3%A1!%20J%C3%A1%20comprei%20as%20placas%20e%20preciso%20de%20suporte.`;
+const WA_SUPORTE_ALUGUEL = `${WA_BASE}?text=Ol%C3%A1!%20J%C3%A1%20aluguei%20meu%20telhado%20e%20preciso%20de%20suporte.`;
+
+// Formulários Google
+const FORM_CONEXAO_GREEN = 'https://docs.google.com/forms/d/e/1FAIpQLScr9672uki_uqqJlm5DefPYFzpxGV-JVxqLmh4S_S6IP2N6Bg/viewform?usp=dialog';
+const FORM_COMPRA_PLACAS = 'https://docs.google.com/forms/d/e/1FAIpQLSfuDWoYH004Av4L0Lp0FByLwidwbooL08QcYOpeKyZZK40lBQ/viewform?usp=dialog';
+const FORM_ALUGUEL_TELHADO = 'https://docs.google.com/forms/d/e/1FAIpQLSeMbhNi0g7YWbJAGp9M5OqXj5JMcNhk4ukiDgHZcplra0aAbA/viewform?usp=dialog';
+
 
 const MENU_PRINCIPAL_BTN = { text: 'Voltar ao Início', action: startChat };
+
+// --- FUNÇÕES BÁSICAS DO CHAT ---
 
 function toggleChat() {
     const container = document.getElementById('chatbot-container');
@@ -243,7 +252,6 @@ function toggleChat() {
     
     container.classList.toggle('chatbot-closed');
     
-    // Verificação mais robusta: se não tem filhos (mensagens), inicia o chat
     if (!container.classList.contains('chatbot-closed')) {
         if (messagesDiv.children.length === 0) {
             startChat();
@@ -255,7 +263,6 @@ function restartChat() {
     startChat();
 }
 
-// Adicionar mensagem do BOT
 function addBotMessage(text, delay = 0) {
     return new Promise(resolve => {
         setTimeout(() => {
@@ -264,19 +271,20 @@ function addBotMessage(text, delay = 0) {
             div.className = 'message bot-message';
             div.innerHTML = `<img src="https://c.topshort.org/aifacefy/ai_face_generator/template/1.webp" class="bot-avatar-small"> ${text}`;
             chatMessages.appendChild(div);
-            // Scroll removed as requested
+            // Auto scroll suave
+            chatMessages.scrollTop = chatMessages.scrollHeight;
             resolve();
         }, delay);
     });
 }
 
-// Adicionar mensagem do USUÁRIO
 function addUserMessage(text) {
     const chatMessages = document.getElementById('chat-messages');
     const div = document.createElement('div');
     div.className = 'message user-message';
     div.innerText = text;
     chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
 function clearOptions() {
@@ -312,6 +320,23 @@ function toggleOptions() {
     optionsContainer.style.display = isVisible ? 'none' : 'block';
 }
 
+// Função auxiliar para exibir formulários (iframe)
+function addForm(url) {
+    const chatMessages = document.getElementById('chat-messages');
+    const div = document.createElement('div');
+    div.className = 'form-container';
+    div.innerHTML = `<iframe src="${url}">Carregando...</iframe>`;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Função auxiliar para mensagem final
+function showEndMessage(msg) {
+    addBotMessage(msg).then(() => {
+        addOptions([MENU_PRINCIPAL_BTN]);
+    });
+}
+
 // --- FLUXOS DO CHAT ---
 
 function startChat() {
@@ -319,11 +344,10 @@ function startChat() {
     chatMessages.innerHTML = '';
     clearOptions();
     
-    // Delay curto para garantir renderização
     addBotMessage("Olá, seja bem-vindo(a) à iGreen Energy. Sobre o que vamos conversar hoje?", 300).then(() => {
         addOptions([
-            { text: 'Conexão placas (Compra)', action: handlePlacasSolares },
-            { text: 'Conexão Solar (Aluguel)', action: handleAluguelTelhado },
+            { text: 'Conexão placas (Compra)', action: handleSetorSolar },
+            { text: 'Conexão Solar (Aluguel)', action: handleSetorSolar },
             { text: 'Conexão green (Desconto)', action: handleDescontoFatura },
             { text: 'Conexão telecom', action: handleTelecom },
             { text: 'Trabalhe conosco', action: handleTrabalheConosco }
@@ -331,7 +355,10 @@ function startChat() {
     });
 }
 
-// Fluxo Desconto / Quiz
+// ==========================================
+//   FLUXO 1: CONEXÃO GREEN (DESCONTO)
+// ==========================================
+
 function handleDescontoFatura() {
     addUserMessage('Conexão Green (Desconto)');
     clearOptions();
@@ -376,29 +403,24 @@ function handleQ3_BaixaRenda() {
 function handleEnd_NaoTitular() {
     addUserMessage('Não');
     clearOptions();
-    addBotMessage("Entendi. Neste caso, o benefício só pode ser solicitado diretamente pelo titular da conta. Peça para o titular entrar em contato!", 0).then(() => addOptions([MENU_PRINCIPAL_BTN]));
+    showEndMessage("Entendi. Neste caso, o benefício só pode ser solicitado diretamente pelo titular da conta. Peça para o titular entrar em contato!");
 }
 function handleEnd_ValorBaixo() {
     addUserMessage('Não');
     clearOptions();
-    addBotMessage("Neste momento, o benefício é válido apenas para contas acima de R$150 mensais. Se sua conta aumentar futuramente, nos procure!", 0).then(() => addOptions([MENU_PRINCIPAL_BTN]));
+    showEndMessage("Neste momento, o benefício é válido apenas para contas acima de R$150 mensais. Se sua conta aumentar futuramente, nos procure!");
 }
 function handleEnd_BaixaRenda() {
     addUserMessage('Sim');
     clearOptions();
-    addBotMessage("Neste momento, nosso benefício é exclusivo para quem não está inscrito no programa Baixa Renda (NIS).", 0).then(() => addOptions([MENU_PRINCIPAL_BTN]));
+    showEndMessage("Neste momento, nosso benefício é exclusivo para quem não está inscrito no programa Baixa Renda (NIS).");
 }
 
 function handleFinal_Formulario() {
     addUserMessage('Não');
     clearOptions();
     addBotMessage("Perfeito! Você atende a todos os requisitos. Preencha os campos abaixo e clique em prosseguir.").then(() => {
-        const chatMessages = document.getElementById('chat-messages');
-        const div = document.createElement('div');
-        div.className = 'form-container';
-        div.innerHTML = `<iframe src="${FORM_URL}">Carregando...</iframe>`;
-        chatMessages.appendChild(div);
-
+        addForm(FORM_CONEXAO_GREEN);
         addBotMessage("Já enviou os dados? Se sim, clique em prosseguir.", 1000).then(() => {
             addOptions([{ text: 'PROSSEGUIR', action: handleProceedToLink }]);
         });
@@ -409,9 +431,200 @@ function handleProceedToLink() {
     addUserMessage('PROSSEGUIR');
     clearOptions();
     addBotMessage("Obrigado! Redirecionando para o cadastro final...").then(() => {
+        // Link Atualizado conforme solicitado
         setTimeout(() => window.location.href = LINK_CADASTRO_DESCONTO, 2000);
     });
 }
+
+// ==========================================
+//   FLUXO 2: SETOR SOLAR (PLACAS E ALUGUEL)
+// ==========================================
+
+function handleSetorSolar() {
+    // Pode vir tanto de "Placas" quanto de "Solar"
+    clearOptions();
+    addBotMessage("Olá, bem-vindo à iGreen Energy. Este é o setor exclusivo para conexão placas e conexão solar. Sobre o que você deseja falar hoje?", 200).then(() => {
+        addOptions([
+            { text: 'Compra de placas solares', action: handleCompraStart },
+            { text: 'Já comprei as placas solares. Desejo suporte', action: handleCompraSuporte },
+            { text: 'Desejo alugar meu telhado', action: handleAluguelStart },
+            { text: 'Já aluguei meu telhado. Preciso de suporte.', action: handleAluguelSuporte }
+        ]);
+    });
+}
+
+// --- Ramo 1: Compra de Placas ---
+function handleCompraStart() {
+    addUserMessage('Compra de placas solares');
+    clearOptions();
+    addBotMessage('Que legal! Para comprar placas solares é necessário cumprir os requisitos de contratação. Vou te fazer algumas perguntas para confirmar os requisitos. Você concorda em contratar uma geração a partir de 250KW, mesmo que seu consumo seja inferior?').then(() => {
+        addOptions([
+            { text: 'Sim', action: handleCompraPagamento },
+            { text: 'Não', action: handleCompraNao }
+        ]);
+    });
+}
+
+function handleCompraNao() {
+    addUserMessage('Não');
+    clearOptions();
+    showEndMessage('Desculpe, no momento não podemos atendê-lo.');
+}
+
+function handleCompraPagamento() {
+    addUserMessage('Sim');
+    clearOptions();
+    addBotMessage('Que maravilha! E qual método de pagamento deseja utilizar?').then(() => {
+        addOptions([
+            { text: 'A vista', action: () => handleCompraShowForm('A vista') },
+            { text: 'Financiamento direto com bancos parceiros', action: () => handleCompraShowForm('Financiamento direto com bancos parceiros') },
+            { text: 'No cartão de crédito', action: () => handleCompraShowForm('No cartão de crédito') },
+            { text: 'Financiamento com meu banco', action: () => handleCompraShowForm('Financiamento com meu banco') }
+        ]);
+    });
+}
+
+function handleCompraShowForm(paymentMethod) {
+    addUserMessage(paymentMethod);
+    clearOptions();
+    let message = '';
+
+    if (paymentMethod === 'A vista') {
+        message = 'Excelente opção! Com pagamento a vista é tudo mais fácil e rápido, reduz muitas etapas no processo.';
+    } else if (paymentMethod === 'No cartão de crédito') {
+        message = 'Legal! O pagamento com cartão de crédito é feito em até 21x com juros.';
+    } else { // Financiamentos
+        message = 'Muito bem. Esta opção de pagamento requer alguns procedimentos para garantir o financiamento.';
+    }
+    
+    message += ' Para prosseguir, preencha o formulário abaixo, e um de nossos atendentes entrará em contato com você por whatsapp para fazer um orçamento.';
+
+    addBotMessage(message).then(() => {
+        addForm(FORM_COMPRA_PLACAS);
+        addOptions([
+            { text: 'Reiniciar Atendimento', action: startChat }
+        ]);
+    });
+}
+
+// --- Ramo 2: Suporte Placas ---
+function handleCompraSuporte() {
+    addUserMessage('Já comprei as placas solares. Desejo suporte');
+    clearOptions();
+    addBotMessage('Que bom! Você já é cliente. Para obter suporte, fale conosco por whatsapp.').then(() => {
+        addOptions([
+            { text: 'Contatar suporte no whatsapp', action: () => window.location.href = WA_SUPORTE_PLACAS }
+        ]);
+    });
+}
+
+// --- Ramo 3: Aluguel de Telhado ---
+function handleAluguelStart() {
+    addUserMessage('Desejo alugar meu telhado');
+    clearOptions();
+    addBotMessage('Que legal! Já sabe como funciona?').then(() => {
+        addOptions([
+            { text: 'Sim', action: handleAluguelSabeSim },
+            { text: 'Não', action: handleAluguelSabeNao }
+        ]);
+    });
+}
+
+function handleAluguelSabeNao() {
+    addUserMessage('Não');
+    clearOptions();
+    addBotMessage(
+        'Vou te explicar brevemente. Nós temos a conexão solar como uma modalidade de aquisição do sistema solar fotovoltaico alternativa, onde nós instalamos o sistema solar completo na sua residência, e durante um período determinado (normalmente 6 anos) esse sistema gera energia para nós.' +
+        '<br><br>Enquanto isso, você continuará pagando sua energia normalmente, mas com um desconto de até 15%, e sem pagar bandeiras tarifárias. Ao final do período estipulado, o sistema solar será 100% seu.' +
+        '<br><br>É importante ressaltar que neste procedimento, nós não vamos te pagar um valor mensal pelo aluguel do seu telhado, pois o pagamento pelo tempo de aluguel será justamente o sistema solar completo.' +
+        '<br><br>Deseja prosseguir e verificar os requisitos de contratação?'
+    ).then(() => {
+        addOptions([
+            { text: 'Sim', action: handleAluguelCheckConsumo },
+            { text: 'Não', action: handleAluguelEndSemProblemas }
+        ]);
+    });
+}
+
+function handleAluguelSabeSim() {
+    addUserMessage('Sim');
+    clearOptions();
+    // Pula direto para a verificação de requisitos
+    handleAluguelCheckConsumo();
+}
+
+function handleAluguelEndSemProblemas() {
+    addUserMessage('Não');
+    clearOptions();
+    showEndMessage('Sem problemas! Estamos à sua disposição.');
+}
+
+function handleAluguelCheckConsumo() {
+    // Lógica para não duplicar mensagem 'Sim' se o user acabou de clicar nela
+    const chatMessages = document.getElementById('chat-messages');
+    if (chatMessages.lastChild && chatMessages.lastChild.textContent !== 'Sim') {
+        // Se a última mensagem não foi 'Sim' (veio do fluxo 'SabeNao'), simular o 'Sim'
+        // Mas se veio de 'SabeSim', o user já clicou.
+        // Simplificando: o bot apenas pergunta.
+    }
+    
+    clearOptions();
+    addBotMessage('Excelente! Para saber se você tem direito à contratação, vou te fazer algumas perguntinhas. Primeiramente, o local possui um consumo de no mínimo 300 reais por mês em fatura?').then(() => {
+        addOptions([
+            { text: 'Sim', action: handleAluguelCheckTitular },
+            { text: 'Não', action: handleAluguelEndNaoCumpre }
+        ]);
+    });
+}
+
+function handleAluguelEndNaoCumpre() {
+    addUserMessage('Não');
+    clearOptions();
+    showEndMessage('Sinto muito, você não cumpre os requisitos.');
+}
+
+function handleAluguelCheckTitular() {
+    addUserMessage('Sim');
+    clearOptions();
+    addBotMessage('Excelente! Você é o titular da fatura?').then(() => {
+        addOptions([
+            { text: 'Sim', action: handleAluguelShowForm },
+            { text: 'Não', action: handleAluguelEndNaoTitular }
+        ]);
+    });
+}
+
+function handleAluguelEndNaoTitular() {
+    addUserMessage('Não');
+    clearOptions();
+    showEndMessage('Sinto muito. Melhor pedir que o titular entre em contato conosco.');
+}
+
+function handleAluguelShowForm() {
+    addUserMessage('Sim');
+    clearOptions();
+    addBotMessage('Maravilha. Preencha o formulário a Seguir para que nossa equipe técnica possa entrar em contato com você para Solicitar as informações necessárias para gerar uma proposta.').then(() => {
+        addForm(FORM_ALUGUEL_TELHADO);
+        addOptions([
+            { text: 'Reiniciar Atendimento', action: startChat }
+        ]);
+    });
+}
+
+// --- Ramo 4: Suporte Aluguel ---
+function handleAluguelSuporte() {
+    addUserMessage('Já aluguei meu telhado. Preciso de suporte.');
+    clearOptions();
+    addBotMessage('Muito bem, vamos lá! Para ter acesso ao suporte especializado, clique em contatar suporte no whatsapp.').then(() => {
+        addOptions([
+            { text: 'Contatar suporte no whatsapp', action: () => window.location.href = WA_SUPORTE_ALUGUEL }
+        ]);
+    });
+}
+
+// ==========================================
+//   OUTROS FLUXOS (TELECOM / TRABALHE)
+// ==========================================
 
 function handleTelecom() {
     addUserMessage('Conexão Telecom');
@@ -423,36 +636,6 @@ function handleTelecom() {
             { text: 'Já sou cliente (Suporte)', action: () => window.location.href = WA_SUPORTE_TELECOM },
             MENU_PRINCIPAL_BTN
         ]);
-    });
-}
-
-function handlePlacasSolares() {
-    addUserMessage('Conexão Placas');
-    clearOptions();
-    addBotMessage('Para comprar seu sistema solar, clique abaixo para conferir os requisitos com nosso time especializado.').then(() => {
-        addOptions([
-            { text: 'Conferir Requisitos', action: handleSolarRedirect },
-            MENU_PRINCIPAL_BTN
-        ]);
-    });
-}
-
-function handleAluguelTelhado() {
-    addUserMessage('Conexão Solar');
-    clearOptions();
-    addBotMessage('Para gerar sua própria energia sem investimento (aluguel de telhado), verifique os requisitos clicando abaixo.').then(() => {
-        addOptions([
-            { text: 'Conferir Requisitos', action: handleSolarRedirect },
-            MENU_PRINCIPAL_BTN
-        ]);
-    });
-}
-
-function handleSolarRedirect() {
-    addUserMessage('Conferir Requisitos');
-    clearOptions();
-    addBotMessage('Redirecionando...').then(() => {
-        setTimeout(() => window.location.href = LINK_BOT_PLACAS_SOLARES, 1500);
     });
 }
 
@@ -469,7 +652,6 @@ function handleTrabalheConosco() {
 
 // --- INICIALIZAÇÃO DO SITE ---
 
-// Isso garante que o site carregue apenas quando o HTML estiver pronto
 document.addEventListener('DOMContentLoaded', function() {
     renderHome();
 });
