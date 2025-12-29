@@ -233,7 +233,7 @@ const WA_PORTABILIDADE = `${WA_BASE}?text=Ol%C3%A1!%20Desejo%20solicitar%20a%20p
 const WA_SUPORTE_TELECOM = `https://wa.me/558001830080?text=Ol%C3%A1!%20J%C3%A1%20sou%20cliente%20iGreen%20Telecom%20e%20desejo%20suporte.`;
 const LINK_BOT_PLACAS_SOLARES = 'https://igreenconection-off.github.io/conex-oplacasesolar/';
 const WA_TRABALHE_CONOSCO = `${WA_BASE}?text=Ol%C3%A1!%20Desejo%20me%20tornar%20um%20franquiado%20e%20trabalhar%20com%20a%20iGreen%20Energy.`;
-const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScRb0k71iMQxP56I54euwRW8tnxcJVqBujT0du4wtFgCHUC4g/viewform?embedded=true';
+const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLScr9672uki_uqqJlm5DefPYFzpxGV-JVxqLmh4S_S6IP2N6Bg/viewform?usp=dialog';
 
 const MENU_PRINCIPAL_BTN = { text: 'Voltar ao Início', action: startChat };
 
