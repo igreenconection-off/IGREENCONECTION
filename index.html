@@ -3,30 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iGreen Energy - Atendimento</title>
+    <title>iGreen Energy</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
-        <img src="https://igreenenergyteam.com.br/wp-content/uploads/2023/08/Ativo-4.png" alt="Logo iGreen Energy">
+        <div class="header-container">
+            <img src="https://igreenenergyteam.com.br/wp-content/uploads/2023/08/Ativo-4.png" alt="Logo iGreen" class="logo">
+            <nav id="navbar">
+                <ul class="menu">
+                    <li><a href="#" onclick="renderHome(); return false;">INÍCIO</a></li>
+                    <li><a href="#" onclick="renderAbout(); return false;">SOBRE</a></li>
+                    <li><a href="#" onclick="renderProducts(); return false;">PRODUTOS</a></li>
+                    <li><a href="#" onclick="renderContact(); return false;">CONTATO</a></li>
+                    <li><a href="#" onclick="openBlog(); return false;">NOVIDADES</a></li>
+                </ul>
+            </nav>
+            <div class="mobile-menu-icon" onclick="toggleMobileMenu()">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <div id="chat-container">
-            
-            <div id="progress-bar-container">
-                <div id="progress-bar"></div>
+    <main id="app-content">
+        </main>
+
+    <div id="product-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modal-body-text"></div>
+        </div>
+    </div>
+
+    <div id="chatbot-trigger" onclick="toggleChat()">
+        <div class="chat-bubble-icon">💬</div>
+    </div>
+
+    <div id="chatbot-container" class="chatbot-closed">
+        <div class="chatbot-header">
+            <div class="header-left">
+                <img src="https://c.topshort.org/aifacefy/ai_face_generator/template/1.webp" alt="Bot Avatar">
+                <span>Assistente iGreen</span>
+            </div>
+            <div class="header-right">
+                <button onclick="restartChat()" title="Reiniciar">↻</button>
+                <button onclick="toggleChat()" title="Fechar" class="close-chat-btn">✕</button>
+            </div>
+        </div>
+        
+        <div class="chatbot-body" id="chat-messages">
             </div>
 
-            <div id="chat-messages">
+        <div class="chatbot-footer">
+            <div id="options-container" class="options-menu" style="display: none;">
                 </div>
-
-            <div id="chat-options">
-                </div>
-
+            <div class="input-area" onclick="toggleOptions()">
+                <span id="input-placeholder">Escolha uma opção...</span>
+            </div>
         </div>
-    </main>
+    </div>
 
     <script src="script.js"></script>
 </body>
