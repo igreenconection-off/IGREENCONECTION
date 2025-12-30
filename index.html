@@ -3,68 +3,256 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iGreen Energy</title>
+    <title>iGreen Energy - Energia Sustentável</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <header>
         <div class="header-container">
-            <img src="https://igreenenergyteam.com.br/wp-content/uploads/2023/08/Ativo-4.png" alt="Logo iGreen" class="logo">
-            <nav id="navbar">
-                <ul class="menu">
-                    <li><a href="#" onclick="renderHome(); return false;">INÍCIO</a></li>
-                    <li><a href="#" onclick="renderAbout(); return false;">SOBRE</a></li>
-                    <li><a href="#" onclick="renderProducts(); return false;">PRODUTOS</a></li>
-                    <li><a href="#" onclick="renderContact(); return false;">CONTATO</a></li>
-                    <li><a href="#" onclick="openBlog(); return false;">NOVIDADES</a></li>
-                </ul>
+            <img src="https://igreenenergyteam.com.br/wp-content/uploads/2023/08/Ativo-4.png" alt="Logo iGreen Energy" class="logo">
+            <nav id="nav-menu">
+                <ul>
+                    <li><a href="#" onclick="showSection('inicio')" class="active">INÍCIO</a></li>
+                    <li><a href="#" onclick="showSection('sobre')">SOBRE</a></li>
+                    <li><a href="#" onclick="showSection('produtos')">PRODUTOS</a></li>
+                    <li><a href="#" onclick="showSection('contato')">CONTATO</a></li>
+                    <li><a href="https://seublog.com.br" target="_blank">NOVIDADES</a></li> </ul>
             </nav>
             <div class="mobile-menu-icon" onclick="toggleMobileMenu()">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
+                <i class="fas fa-bars"></i>
             </div>
         </div>
     </header>
 
-    <main id="app-content">
-        </main>
+    <main id="main-content">
 
-    <div id="product-modal" class="modal-overlay" style="display: none;">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            <div id="modal-body-text"></div>
-        </div>
-    </div>
-
-    <div id="chatbot-trigger" onclick="toggleChat()">
-        <div class="chat-bubble-icon">💬</div>
-    </div>
-
-    <div id="chatbot-container" class="chatbot-closed">
-        <div class="chatbot-header">
-            <div class="header-left">
-                <img src="https://c.topshort.org/aifacefy/ai_face_generator/template/1.webp" alt="Bot Avatar">
-                <span>Assistente iGreen</span>
-            </div>
-            <div class="header-right">
-                <button onclick="restartChat()" title="Reiniciar">↻</button>
-                <button onclick="toggleChat()" title="Fechar" class="close-chat-btn">✕</button>
-            </div>
-        </div>
-        
-        <div class="chatbot-body" id="chat-messages">
-            </div>
-
-        <div class="chatbot-footer">
-            <div id="options-container" class="options-menu" style="display: none;">
+        <section id="inicio" class="section active-section">
+            <div class="hero-image">
+                <div class="hero-text">
+                    <h1>ENERGIA LIMPA<br>POR UM MUNDO MAIS SUSTENTÁVEL</h1>
                 </div>
-            <div class="input-area" onclick="toggleOptions()">
-                <span id="input-placeholder">Escolha uma opção...</span>
+            </div>
+            
+            <div class="container content-padding">
+                <h2>Por um mundo mais sustentável</h2>
+                <p>A iGreen Energy é uma empresa brasileira, fundada em dezembro de 2021 em Uberlândia (MG), que atua no setor de energia renovável. O grande diferencial dela é a democratização da energia solar, permitindo que pessoas comuns e empresas tenham desconto na conta de luz sem precisar gastar um centavo com a compra ou instalação de placas solares.</p>
+                <p>O objetivo central da iGreen é a democratização da energia limpa. A empresa busca remover as barreiras que impedem o cidadão comum de ser sustentável (como o alto custo de painéis ou a falta de telhado próprio).</p>
+                
+                <ul class="feature-list">
+                    <li><strong>Transição Energética:</strong> Acelerar a substituição de fontes fósseis por renováveis, injetando energia limpa na rede nacional através de suas mais de 250 usinas parceiras.</li>
+                    <li><strong>Conscientização:</strong> Transformar o ato de "pagar o boleto de luz" em uma ação de impacto ambiental positivo.</li>
+                    <li><strong>Metas de Impacto:</strong> Reduzir toneladas de emissão de CO2 no planeta, com o objetivo de alcançar 1 milhão de clientes conectados até o final de 2025.</li>
+                </ul>
+
+                <h2>Produtos Oferecidos</h2>
+                <p>A iGreen diversificou seu portfólio para além da energia solar, criando um ecossistema de serviços:</p>
+                <ul class="feature-list">
+                    <li><strong>Conexão Green (Energia por Assinatura):</strong> O produto principal. Desconto direto na conta de luz para residências e empresas (baixa tensão) sem necessidade de instalação.</li>
+                    <li><strong>Conexão Livre:</strong> Solução voltada para grandes empresas e indústrias (alta tensão) que desejam migrar para o Mercado Livre de Energia, com descontos que podem chegar a 30%.</li>
+                    <li><strong>Conexão Placas:</strong> Para quem prefere ter seu próprio sistema, a iGreen também comercializa a venda e instalação física de painéis solares.</li>
+                    <li><strong>iGreen Telecom:</strong> Uma operadora de telefonia móvel digital que oferece planos de celular com benefícios como internet que acumula e WhatsApp ilimitado.</li>
+                    <li><strong>iGreen Club:</strong> Um clube de benefícios e cashback com mais de 30 mil parceiros (varejo, lazer, saúde) exclusivo para clientes.</li>
+                </ul>
+
+                <h2>Diferenciais para o Cliente</h2>
+                <p>Por que alguém escolheria a iGreen em vez de continuar com a distribuidora comum ou instalar suas próprias placas?</p>
+                <ul class="feature-list">
+                    <li><strong>Risco e Investimento Zero:</strong> Diferente da instalação física, na Conexão Green o cliente não gasta nada. Não há obras, furos no telhado ou manutenção.</li>
+                    <li><strong>Liberdade Total (Sem Fidelidade):</strong> Um dos maiores atrativos é a ausência de contratos de fidelidade de longo prazo. O cliente pode cancelar o serviço a qualquer momento sem multas (verificando apenas o prazo de aviso prévio).</li>
+                    <li><strong>Cashback Sustentável:</strong> A iGreen permite que o cliente indique amigos. Essas indicações geram créditos que podem diminuir ainda mais a conta de luz, chegando, em alguns casos, a zerar o valor da fatura.</li>
+                    <li><strong>Processo 100% Digital:</strong> A adesão é feita em minutos via WhatsApp ou aplicativo, bastando enviar uma foto da conta de luz atual.</li>
+                    <li><strong>Benefícios Adicionais:</strong> Ao se tornar cliente de energia, você ganha acesso automático ao Clube iGreen, gerando economia também em farmácias, supermercados e lojas online.</li>
+                </ul>
+
+                <div class="ai-links">
+                    <h3>Ainda tem dúvidas? Pergunte a qualquer IA da sua confiança!</h3>
+                    <div class="ai-buttons">
+                        <a href="https://gemini.google.com/app" target="_blank">Gemini</a>
+                        <a href="https://chatgpt.com" target="_blank">ChatGPT</a>
+                        <a href="https://copilot.com" target="_blank">Copilot</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="section">
+            <div class="container content-padding">
+                <h2>Quem somos?</h2>
+                
+                <h3>1. Missão, Visão e Valores</h3>
+                <p><strong>Missão:</strong> Enriquecer vidas e impactar o mundo com sustentabilidade, transformando a vida das pessoas através de uma energia limpa, barata e prática.</p>
+                <p><strong>Visão:</strong> Ser uma referência global em sustentabilidade, com a meta ousada de alcançar 1 milhão de clientes satisfeitos até 2025.</p>
+                <p><strong>Valores:</strong> Fé, Prosperidade e Sustentabilidade.</p>
+
+                <h3>2. Como Funciona (O Produto Principal)</h3>
+                <p>O carro-chefe da empresa é a Energia Solar por Assinatura (Energia Compartilhada).</p>
+                <ul class="feature-list">
+                    <li><strong>Geração:</strong> A iGreen possui ou faz parcerias com grandes "fazendas solares" que geram energia limpa.</li>
+                    <li><strong>Injeção:</strong> Essa energia é injetada na rede da concessionária local (como Cemig, Enel ou CPFL).</li>
+                    <li><strong>Crédito:</strong> A energia gerada vira créditos que são abatidos diretamente na sua conta de luz.</li>
+                    <li><strong>Benefício:</strong> O cliente recebe um desconto (que geralmente varia de 10% a 15%) no valor da energia, sem precisar de obras, instalação ou fidelidade contratual.</li>
+                </ul>
+
+                <h3>3. Principais Ações e Diferenciais</h3>
+                <p>A iGreen opera em um modelo de Gestão Compartilhada, focado no mundo digital:</p>
+                <ul class="feature-list">
+                    <li><strong>Acesso 100% Digital:</strong> Todo o processo de adesão é feito online, apenas com a foto da conta de luz.</li>
+                    <li><strong>iGreen Club:</strong> Um clube de benefícios que oferece descontos em mais de 30 mil estabelecimentos (farmácias, cinemas, lojas de varejo) para quem é cliente.</li>
+                    <li><strong>Cashback Sustentável:</strong> Um programa onde o cliente pode indicar amigos e acumular créditos para reduzir ainda mais (ou até zerar) sua própria conta de energia.</li>
+                </ul>
+
+                <h3>4. Modelo de Negócio (Licenciados)</h3>
+                <p>Além de vender energia, a iGreen funciona através de um modelo de licenciamento. Pessoas podem se tornar "Licenciados iGreen" para comercializar as soluções da empresa.</p>
+                <ul class="feature-list">
+                    <li>O licenciado ganha comissões recorrentes sobre o consumo de energia dos clientes que ele conecta à rede.</li>
+                    <li>É uma forma de gerar renda passiva ajudando outras pessoas a economizarem.</li>
+                </ul>
+
+                <h3>5. Parcerias Estratégicas</h3>
+                <p>Para dar robustez à operação, a iGreen possui alianças com gigantes do setor elétrico, como a Comerc Energia (uma das maiores comercializadoras de energia do país) e a Vibra Energia (antiga BR Distribuidora), o que garante a entrega e a infraestrutura necessária para as usinas.</p>
+
+                <div class="ai-links">
+                    <h3>Ainda tem dúvidas? Pergunte a qualquer IA da sua confiança!</h3>
+                    <div class="ai-buttons">
+                        <a href="https://gemini.google.com/app" target="_blank">Gemini</a>
+                        <a href="https://chatgpt.com" target="_blank">ChatGPT</a>
+                        <a href="https://copilot.com" target="_blank">Copilot</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="produtos" class="section">
+            <div class="container content-padding">
+                <h2>Nossos Produtos</h2>
+                <div class="products-grid">
+                    <div class="product-card" onclick="openModal('modal-placas')">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjVz9ROZvxxP7SW82EPzwoP2V3OP5AQgmpDA&s" alt="Conexão Placas">
+                        <h3>CONEXÃO PLACAS</h3>
+                    </div>
+                    <div class="product-card" onclick="openModal('modal-solar')">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4lJe8N58Lf37wVVf0YmNfcD1c4WN-7HDbig&s" alt="Conexão Solar">
+                        <h3>CONEXÃO SOLAR</h3>
+                    </div>
+                    <div class="product-card" onclick="openModal('modal-livre')">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8boxAOqBvav8PMtGG0hUtKgS_stsm3oYlYA&s" alt="Conexão Livre">
+                        <h3>CONEXÃO LIVRE</h3>
+                    </div>
+                    <div class="product-card" onclick="openModal('modal-green')">
+                        <img src="https://blog.corsolar.com.br/wp-content/uploads/2022/06/o-que-e-energia-solar.jpg" alt="Conexão Green">
+                        <h3>CONEXÃO GREEN</h3>
+                    </div>
+                    <div class="product-card" onclick="openModal('modal-telecom')">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbFNAlVKJWDNtfErOMrSpZKu8nEYoPUYKKOw&s" alt="Conexão Telecom">
+                        <h3>CONEXÃO TELECOM</h3>
+                    </div>
+                    <div class="product-card" onclick="openModal('modal-trabalhe')">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdVchOpxDF6JYLgLdMByr1tBnqN4dDeqZN5Q&s" alt="Trabalhe Conosco">
+                        <h3>TRABALHE CONOSCO</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="section">
+            <div class="container content-padding">
+                <h2>Contate-nos</h2>
+                <div class="contact-list">
+                    <a href="https://instagram.com/igreenconection" target="_blank" class="contact-band">
+                        <img src="https://p2.trrsf.com/image/fget/cf/500/0/images.terra.com/2025/06/20/1675662044-logomarca-do-instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://tiktok.com/@igreen.conection?_r=1&_t=ZS-92dQ9cUoxHd" target="_blank" class="contact-band">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1KGWusbkg_VTakXR1MIIJlHzj3lwC4avJDg&s" alt="TikTok">
+                    </a>
+                    <a href="https://kwai-video.com/u/@igreenconection/DusCc03g" target="_blank" class="contact-band">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOt4ALubwTRk7pFR3okML4QHlVCOCcn8CdGw&s" alt="Kwai">
+                    </a>
+                    <a href="https://facebook.com/share/1GzdF41XRm/" target="_blank" class="contact-band">
+                        <img src="https://mundodrix.com.br/site/wp-content/uploads/2021/10/facebook.jpg" alt="Facebook">
+                    </a>
+                    <a href="https://wa.me/5584920039738" target="_blank" class="contact-band">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYbU8Wu5nGR_FNf86byCyjsC6no2hcA_LmZg&s" alt="WhatsApp">
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="modal-overlay" class="modal-overlay" onclick="closeAllModals()"></div>
+
+    <div id="modal-placas" class="modal">
+        <span class="close-modal" onclick="closeAllModals()">&times;</span>
+        <h3>Conexão Placas</h3>
+        <p>A conexão placas é o meio pelo qual você pode comprar o seu kit completo de sistema solar fotovoltaico para sua casa e gerar sua própria energia! Deseja realizar uma simulação agora?</p>
+        <a href="#" onclick="openChatWithContext('Conexão placas'); closeAllModals(); return false;" class="modal-link">Fale conosco!</a>
+    </div>
+
+    <div id="modal-solar" class="modal">
+        <span class="close-modal" onclick="closeAllModals()">&times;</span>
+        <h3>Conexão Solar</h3>
+        <p>A conexão solar é o meio pelo qual você pode adquirir seu próprio sistema solar fotovoltaico e gerar sua própria energia sem investimentos! Nós faremos a vistoria, instalação e também garantiremos que o sistema gerará energia do começo ao fim. No início alugaremos o seu telhado por um período determinado a partir de 6 anos. Durante esse tempo, seu telhado gerará energia para nós, e você continuará pagando sua energia normal, como se não tivesse usina solar em casa, porém com um bom desconto, e sem pagar bandeiras tarifárias. Ao fim do período estipulado, a mini usina solar instalada na sua casa será 100% sua! Gostou da ideia?</p>
+        <a href="#" onclick="openChatWithContext('Conexão Solar'); closeAllModals(); return false;" class="modal-link">Fale conosco!</a>
+    </div>
+
+    <div id="modal-livre" class="modal">
+        <span class="close-modal" onclick="closeAllModals()">&times;</span>
+        <h3>Conexão Livre</h3>
+        <p>Solução voltada para grandes empresas e indústrias (alta tensão) que desejam migrar para o Mercado Livre de Energia, com descontos que podem chegar a 30%.</p>
+        <a href="https://wa.me/5584920039738" target="_blank" class="modal-link">Fale conosco!</a>
+    </div>
+
+    <div id="modal-green" class="modal">
+        <span class="close-modal" onclick="closeAllModals()">&times;</span>
+        <h3>Conexão Green</h3>
+        <p>A conexão green é o jeito de você economizar na sua fatura sem investir absolutamente nada! Você pode realizar o cadastro conosco e garantir a sua portabilidade, e assim, a energia consumida na sua casa será abatida pelos nossos créditos de energia gerados pelas nossas fazendas de energia solar. Desse modo, você poderá pagar sua energia com um desconto de até 15%, livre das bandeiras tarifárias e ainda participa de um programa de indicações, onde cada amigo indicado que for aprovado pode reduzir ainda mais a sua fatura, podendo até zerar a sua conta! Ficou interessado?</p>
+        <a href="#" onclick="openChatWithContext('Conexão green'); closeAllModals(); return false;" class="modal-link">Fale conosco!</a>
+    </div>
+
+    <div id="modal-telecom" class="modal">
+        <span class="close-modal" onclick="closeAllModals()">&times;</span>
+        <h3>Conexão Telecom</h3>
+        <p>Uma operadora de telefonia móvel digital que oferece planos de celular com benefícios como internet que acumula e WhatsApp ilimitado. A operadora digital em nuvem iGreen Telecom se conecta com as torres de telefonia móvel mais próximas, garantindo que você tenha sempre sinal até nos lugares mais distantes! Internet rapida, conexão de longo alcance e internet que acumula, tudo numa operadora só! Ficou interessado?</p>
+        <a href="#" onclick="openChatWithContext('Conexão telecom'); closeAllModals(); return false;" class="modal-link">Fale conosco!</a>
+    </div>
+
+    <div id="modal-trabalhe" class="modal">
+        <span class="close-modal" onclick="closeAllModals()">&times;</span>
+        <h3>Trabalhe Conosco</h3>
+        <p>Além de vender energia, a iGreen funciona através de um modelo de licenciamento. Pessoas podem se tornar "Licenciados iGreen" para comercializar as soluções da empresa.</p>
+        <p>O licenciado ganha comissões recorrentes sobre o consumo de energia dos clientes que ele conecta à rede. É uma forma de gerar renda passiva ajudando outras pessoas a economizarem.</p>
+        <h4>Parcerias Estratégicas</h4>
+        <p>Para dar robustez à operação, a iGreen possui alianças com gigantes do setor elétrico, como a Comerc Energia e a Vibra Energia. Ficou interessado?</p>
+        <a href="#" onclick="openChatWithContext('Trabalhe conosco'); closeAllModals(); return false;" class="modal-link">Fale conosco!</a>
+    </div>
+
+    <div id="chatbot-toggle" onclick="toggleChatbot()">
+        <i class="fas fa-comment-dots"></i>
+    </div>
+
+    <div id="chatbot-container">
+        <div class="chat-header">
+            <div class="chat-header-left">
+                <i class="fas fa-arrow-left" id="mobile-back-btn" onclick="toggleChatbot()"></i>
+                <div class="avatar-wrapper">
+                    <img src="https://c.topshort.org/aifacefy/ai_face_generator/template/1.webp" alt="Bot Avatar">
+                </div>
+                <span>iGreen Assistant</span>
+            </div>
+            <div class="chat-header-right">
+                <i class="fas fa-sync-alt" onclick="restartChat()"></i>
             </div>
         </div>
+        <div class="chat-body" id="chat-body">
+            </div>
+        <div class="chat-input-area" onclick="toggleOptions()">
+            <span id="input-placeholder">Escolha uma opção...</span>
+        </div>
+        <div class="chat-options-menu" id="chat-options-menu">
+            </div>
     </div>
 
     <script src="script.js"></script>
